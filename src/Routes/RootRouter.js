@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
 import { updateAuthToken } from "Shared/Axios";
 import AppLayout from "Components/Core/AppLayout";
 import { AUTH_ROUTES } from "./AuthRoutes";
@@ -12,15 +11,12 @@ import PublicLayout from "Components/Core/PublicLayout";
 import PrivateLayout from "Components/Core/PrivateLayout";
 import RenderRoutes from "./RenderRoutes";
 
-const DEFAULT_AUTHENTICATED_ROUTE = "/dashboard";
+const DEFAULT_AUTHENTICATED_ROUTE = "/";
 const DEFAULT_GUEST_ROUTE = "/";
 
 const GuestRoutes = () => {
   return (
     <Switch>
-      <Route exact path={AUTH_ROUTES.map((route) => route.path)}>
-        <RenderRoutes routes={AUTH_ROUTES} />
-      </Route>
       <Route exact path={PUBLIC_ROUTES.map((route) => route.path)}>
         <PublicLayout>
           <RenderRoutes routes={PUBLIC_ROUTES} />
@@ -28,6 +24,7 @@ const GuestRoutes = () => {
       </Route>
       <Redirect from="*" to={DEFAULT_GUEST_ROUTE} />
     </Switch>
+
   );
 };
 
@@ -51,9 +48,8 @@ const RootRouter = () => {
   const baseName = process.env.REACT_APP_BASE_NAME;
   const isAuthenticated = !!token;
   return (
-    <BrowserRouter basename={baseName}>
-      <DocumentTitle isAuthenticated={isAuthenticated} />
-      <AppLayout isAuthenticated={isAuthenticated}>{token ? <AuthenticatedRoutes /> : <GuestRoutes />}</AppLayout>
+    <BrowserRouter >
+      {token ? <AuthenticatedRoutes /> : <GuestRoutes />}
     </BrowserRouter>
   );
 };
