@@ -2,8 +2,9 @@ export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_VERSION = process.env.REACT_APP_API_VERSION;
 
 export const API_URLS = {
-  LOGIN: API_BASE_URL + API_VERSION + "/login",
-  LOGOUT: API_BASE_URL + API_VERSION + "/logout",
+  LOGIN: "http://restapi.adequateshop.com/api/authaccount/login",
+  LOGOUT: "http://restapi.adequateshop.com/api/authaccount/logout",
+  SIGNUP:"http://restapi.adequateshop.com/api/authaccount/registration",
 };
 
 export const STATUS_CODES = {

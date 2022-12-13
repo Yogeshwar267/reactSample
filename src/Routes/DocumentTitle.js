@@ -15,8 +15,9 @@ const DocumentTitle = ({ isAuthenticated = false }) => {
   const title = matchedRoute ? matchedRoute.title : "";
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta></meta>
+      {null}
+      {/* <title>{title}</title>
+      <meta></meta> */}
     </Helmet>
   );
 };

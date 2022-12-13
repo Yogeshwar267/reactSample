@@ -1,6 +1,5 @@
 import Login from "Views/Login";
-import SignUp from "Views/SignUp";
-import ForgotPassword from "Views/ForgotPassword";
+import SignUp from "Views/Signup";
 
 export const AUTH_ROUTES = [
   {
@@ -12,10 +11,5 @@ export const AUTH_ROUTES = [
     path: "/signup",
     component: SignUp,
     title: "Signup",
-  },
-  {
-    path: "/forgot-password",
-    component: ForgotPassword,
-    title: "Forgot Password",
   },
 ];

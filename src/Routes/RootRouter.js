@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { updateAuthToken } from "Shared/Axios";
-import AppLayout from "Components/Core/AppLayout";
 import { AUTH_ROUTES } from "./AuthRoutes";
 import { PUBLIC_ROUTES } from "./PublicRoutes";
 import { PRIVATE_ROUTES } from "./PrivateRoutes";
@@ -10,6 +9,7 @@ import DocumentTitle from "./DocumentTitle";
 import PublicLayout from "Components/Core/PublicLayout";
 import PrivateLayout from "Components/Core/PrivateLayout";
 import RenderRoutes from "./RenderRoutes";
+import AppLayout from "Components/Core/AppLayout";
 
 const DEFAULT_AUTHENTICATED_ROUTE = "/";
 const DEFAULT_GUEST_ROUTE = "/";

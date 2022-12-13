@@ -11,7 +11,7 @@ const withLayout = (PageComponent: React.FunctionComponent) => {
           <div className="flex flex-grow items-center">
             <div className="flex xs:hidden items-center ml-auto">
               <HomeButton />
-              <SignupButton />
+              {/* <SignupButton /> */}
               <LoginButton />
             </div>
           </div>

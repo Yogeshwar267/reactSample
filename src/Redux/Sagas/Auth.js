@@ -1,10 +1,10 @@
 import { takeLatest, all } from "redux-saga/effects";
-import { LOGIN, LOGOUT } from "../Actions/Auth";
+import { LOGIN, LOGOUT, SIGNUP } from "../Actions/Auth";
 import requestSaga from "Shared/RequestSaga";
 import { API_URLS } from "Services/Api/Constants";
+import { postRequest } from '../../Shared/Axios';
 
-function* logIn({ payload }) {
-
+function* logIn({ payload,callback }) {
   try {
     const response = yield postRequest({
       API: API_URLS.LOGIN,
@@ -13,11 +13,28 @@ function* logIn({ payload }) {
     if (response?.status >= 400 && response?.status <= 500) {
       //handle cases
     } else if (response?.status === 200) {
-      console.log("API HIT");
+      callback(response.data.data);
     }
   } catch (error) {
     //handle cases
-    console.log("ERROR");
+    console.log("ERROR",error);
+  }
+}
+
+function* signup({ payload,callback }) {
+  try {
+    const response = yield postRequest({
+      API: API_URLS.SIGNUP,
+      DATA: payload,
+    });
+    if (response?.status >= 400 && response?.status <= 500) {
+      //handle cases
+    } else if (response?.status === 200) {
+      callback(response.data.data);
+    }
+  } catch (error) {
+    //handle cases
+    console.log("ERROR",error);
   }
 }
 
@@ -40,6 +57,7 @@ function* watchAuth() {
   yield all([
     takeLatest(LOGIN, logIn),
     takeLatest(LOGOUT, logOut),
+    takeLatest(SIGNUP,signup)
   ]);
 }
 

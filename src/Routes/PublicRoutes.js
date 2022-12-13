@@ -22,3 +22,4 @@ export const PUBLIC_ROUTES = [
     title: "Signup",
   },
 ];
+
