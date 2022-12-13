@@ -1,14 +1,9 @@
-import Dashbord from "Views/Dashboard";
+import Home from "Views/Home";
 
 export const PRIVATE_ROUTES = [
   {
-    path: "/dashboard",
-    component: Dashbord,
-    title: "Dashboard",
-  },
-  {
-    path: "/wishlist",
-    component: () => "Your wishlist here",
-    title: "Dashboard",
-  },
+    path: "/",
+    component: Home,
+    title: "Home",
+  }
 ];
